@@ -31,6 +31,7 @@ var RoomsView = {
   //   </div>
   // </body>
 
+  // NOT DONE, NEED TO COME BACK TO THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   _selectRoom(roomname) {
     // TODO: Figure out how to select the dropdown
     // RoomsView.$select.find('option[value="' + roomname + '"]').trigger('change');

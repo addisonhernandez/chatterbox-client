@@ -42,14 +42,6 @@ var MessagesView = {
 
   handleClick: function (event) {
     // (this should add the sender to the user's friend list).
-    // username element example:
-    // <div id="chats">
-    //     <div class="chat">
-    //       <div class="username">Mel Brooks</div>
-    //       <div class="message-text">Never underestimate the power of the Schwartz!</div>
-    //       <div class="roomname">lobby</div>
-    //     </div>
-    // </div>
     Friends.toggleStatus(event.target.innerText);
   }
 
