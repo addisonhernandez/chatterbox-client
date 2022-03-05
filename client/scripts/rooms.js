@@ -5,7 +5,7 @@
 var Rooms = {
 
   // list of strings of room names
-  _data: new Set,
+  _data: new Set(),
 
   // Define methods which allow you to add rooms, update the list,
   // mark a room as selected, etc.
@@ -14,8 +14,6 @@ var Rooms = {
   add(roomname) {
     Rooms._data.add(roomname);
   },
-
-  //update: ????
 
   //foreach: (takes callback function)
   //  iterate over data

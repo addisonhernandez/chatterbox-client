@@ -15,10 +15,11 @@ var RoomsView = {
 
     // TODO: Default to 'Lobby' // ??
     // add Lobby to the rooms data structure and render it
-    //Rooms.add('Lobby');
+    // Rooms.add('Lobby');
     RoomsView.render();
     RoomsView._selectRoom('Lobby');
   },
+
   // <body>
   //   <div id="main">
   //     <div id="rooms">
@@ -50,7 +51,7 @@ var RoomsView = {
     // make a new room <option>
 
     // newRoom is a function (_.template returns a function), expects an
-    //object that has a property of <%-roomname%>
+    // object that has a property of <%-roomname%>
     var newRoom = _.template(`
       <option value="<%-roomname%>"><%-roomname%></option>
     `);

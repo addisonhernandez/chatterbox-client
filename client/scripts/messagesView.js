@@ -17,8 +17,8 @@ var MessagesView = {
 
   // ALL MESSAGES
   render: function (roomname) {
-    // TODO: Render _all_ the messages. // NOT DONE ??????
-    // TODO: Render only messages for the current room
+    MessagesView.$chats.html('');
+
 
     // if roomname is 'lobby' => render all the things
 
@@ -36,18 +36,16 @@ var MessagesView = {
   // INDIVIDIAL MESSAGE
   renderMessage: function (message) {
 
+    // <!--<div class="github_handle">a.k.a: "<%-github_handle%>"</div>-->     // for GitHub name
     // var $renderedMesssage = $(MessageView.render(message));
     var newMessage = _.template(`
-        <div class="message">
-        <div class="username"><%-username%></div>
-        <div class="github_handle">a.k.a "<%-github_handle%>"</div>
-          <div class="message-text"><%-text%></div>
-          <div class="roomname"><%-roomname%></div>
-        </div>
-      `);
+      <div class="message">
+        <div class="username">Name: <%-username%></div>
+        <div class="message-text"><%-text%></div>
+        <div class="roomname">Room: <%-roomname%></div>
+      </div>
+    `);
     var $newMessage = $(newMessage(message).trim());
-
-    // debugger;
     MessagesView.$chats.append($newMessage);
   },
 

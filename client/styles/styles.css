@@ -3,15 +3,14 @@ body {
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
-
 }
 
 #main, #chats {
     width: 500px;
-    margin: 5px
+    margin: 10px;
     text-align: left;
     background: white;
-    padding: 50px 60px;
+    padding: 20px 20px;
     border: solid #ddd;
     border-radius: 10px;
     border-width: 0 1px 1px 1px;
@@ -71,6 +70,10 @@ form input[type=text] {
     font-weight: 800;
 }
 
+.chat .username:hover {
+    cursor: pointer;
+}
+
 .chat:hover {
     background-color: #ddd;
 }
@@ -88,5 +91,33 @@ form input[type=text] {
 .friend {
     color: #fff;
     background-color: #0090da;
+}
+
+.message {
+    margin: 10px;
+    border: 2px solid #0090da;
+    border-radius: 5px;
+    padding:10px;
+}
+
+.message-text {
+    font-weight: bold;
+
+}
+
+h1 {
+    color: #0090da;
+}
+
+button, .submit {
+    border-radius: 10px;
+    padding: 7px;
+}
+
+button:hover, .submit:hover {
+    color: white;
+    background-color: #0090da;
+    transition-property: background-color;
+	transition-duration: 1s;
 }
 

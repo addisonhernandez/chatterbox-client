@@ -27,20 +27,8 @@ var FormView = {
     // use the Parse API to send {message}
     // Parse.create function signature:
     // function (message, successCB, errorCB = null) {}
-    Parse.create(newMessage, () => console.log('Hey, submit worked!'));
+    Parse.create(newMessage, data => MessagesView.renderMessage(...data));
   },
-
-  //   <div id="main">
-  //     <form action="#" id="send" method="post">
-  //       <input type="text" name="message" id="message">
-  //       <input type="submit" name="submit" class="submit" disabled="disabled">
-  //     </form>
-  //   </div>
-
-  // $('#message').val('Why so many Mel Brooks quotes?');
-  // $('form .submit').trigger('submit');
-  // expect(Parse.create.called).to.be.true;
-  // Parse.create.restore();
 
   setStatus: function(active) {
     var status = active ? 'true' : null;

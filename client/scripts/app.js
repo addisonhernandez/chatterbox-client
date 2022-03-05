@@ -22,18 +22,20 @@ var App = {
     App.fetch(App.stopSpinner);
 
     // continuously update the feed
-    setInterval(App.fetch, 5000);
+    setInterval(App.fetch, 10000);
 
   },
 
   fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data);
-
+      if (data && data.length) {
+        Messages._data = [];
+      }
       // for each message in data:
       // insert message data into -> messages & rooms
       data.forEach(message => {
+        // this would be a great use of promises!
+        // .add().then(render)
         Messages.add(message);
         RoomsView.render();
         Rooms.add(message.roomname);
