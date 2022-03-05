@@ -30,7 +30,7 @@ var App = {
       // examine the response from the server request:
       console.log(data);
 
-      // TODO: Use the data to update Messages and Rooms
+      // TODO: Use the data to update Messages and Rooms // NOT DONE YET
       // and re-render the corresponding views.
     });
   },

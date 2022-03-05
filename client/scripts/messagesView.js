@@ -10,40 +10,47 @@ var MessagesView = {
     // when this view loads.
 
     // Render all current data stored in Messages._data // ??
+
+    // Attach an event handler for all usernames
+    MessagesView.$chats.on('click', '.username', event => MessagesView.handleClick(event));
   },
 
-  render: function () {
+  // ALL MESSAGES
+  render: function (roomname = 'Lobby') {
     // TODO: Render _all_ the messages. // NOT DONE ??????
-    _.template(`
-      <div class="message">
-        <div class="username"><%-username%></div>
-        <div class="message-text"><%-text%></div>
-        <div class="roomname"><%-roomname%></div>
-      </div>
-    `);
+    // TODO: Render only messages for the current room
+
+    // if roomname is 'lobby' => render all the things
+
+    // otherwise: only render messages in `roomname`
+    //  define a callback: call renderMessage if message.roomname is roomname
   },
 
+  // INDIVIDIAL MESSAGE
   renderMessage: function (message) {
-    // TODO: Render a single message.
-    var $renderedMesssage = $(MessageView.render(message));
 
-    MessagesView.$chats.append($renderedMesssage);
+    // var $renderedMesssage = $(MessageView.render(message));
+    var newMessage = _.template(`
+        <div class="message">
+          <div class="username"><%-username%></div>
+          <div class="message-text"><%-text%></div>
+          <div class="roomname"><%-roomname%></div>
+        </div>
+      `);
+    MessagesView.$chats.append($(newMessage(message)));
   },
-
-  // MessagesView.renderMessage(message);
-  // expect($('#chats').children().length).to.equal(1);
-
-  //   <!--
-  //   <div class="chat">
-  //     <div class="username"></div>
-  //     <div></div>
-  //   </div>
-  //   -->
-  // `)
 
   handleClick: function (event) {
-    // TODO: handle a user clicking on a message
     // (this should add the sender to the user's friend list).
+    // username element example:
+    // <div id="chats">
+    //     <div class="chat">
+    //       <div class="username">Mel Brooks</div>
+    //       <div class="message-text">Never underestimate the power of the Schwartz!</div>
+    //       <div class="roomname">lobby</div>
+    //     </div>
+    // </div>
+    Friends.toggleStatus(event.target.innerText);
   }
 
 };
