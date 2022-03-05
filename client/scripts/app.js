@@ -9,7 +9,7 @@ var App = {
 
   username: 'anonymous',
 
-  initialize: function() {
+  initialize: function () {
     // string of name inputed to pop up
     App.username = window.location.search.substr(10);
 
@@ -21,27 +21,38 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
-    // TODO: Make sure the app loads data from the API
-    // continually, instead of just once at the start.
+    // continuously update the feed
+    setInterval(App.fetch, 5000);
+
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
 
-      // TODO: Use the data to update Messages and Rooms // NOT DONE YET
-      // and re-render the corresponding views.
+      // for each message in data:
+      // insert message data into -> messages & rooms
+      data.forEach(message => {
+        Messages.add(message);
+        RoomsView.render();
+        Rooms.add(message.roomname);
+        MessagesView.render();
+      });
+
+      // invoke the callback function
+      callback();
     });
   },
 
-  // ???????
-  startSpinner: function() {
+  // makes submit button diabled, spinning gif appears
+  startSpinner: function () {
     App.$spinner.show();
     FormView.setStatus(true);
   },
 
-  stopSpinner: function() {
+  // makes submit button enabled, spinning gif disappears
+  stopSpinner: function () {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
   }

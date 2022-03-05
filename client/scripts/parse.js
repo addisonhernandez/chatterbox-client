@@ -11,7 +11,6 @@ var Parse = {
   // RESTful POST to server, http verb = post, server is the URL noun (line 8)
   // client -> server -> client
   create: function (message, successCB, errorCB = null) {
-    // TODO: send a request to the Parse API to save the message
     $.ajax({
       url: Parse.server,
       type: 'POST',

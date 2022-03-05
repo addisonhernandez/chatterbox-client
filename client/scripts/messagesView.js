@@ -16,7 +16,7 @@ var MessagesView = {
   },
 
   // ALL MESSAGES
-  render: function (roomname = 'Lobby') {
+  render: function (roomname) {
     // TODO: Render _all_ the messages. // NOT DONE ??????
     // TODO: Render only messages for the current room
 
@@ -24,6 +24,13 @@ var MessagesView = {
 
     // otherwise: only render messages in `roomname`
     //  define a callback: call renderMessage if message.roomname is roomname
+
+    roomname = roomname || $('#rooms select').val();
+    const messageFilter = { filterProp: 'roomname', filterVal: roomname };
+
+    const messages = Messages.retrieve(messageFilter);
+
+    messages.forEach((message) => MessagesView.renderMessage(message));
   },
 
   // INDIVIDIAL MESSAGE
@@ -32,12 +39,16 @@ var MessagesView = {
     // var $renderedMesssage = $(MessageView.render(message));
     var newMessage = _.template(`
         <div class="message">
-          <div class="username"><%-username%></div>
+        <div class="username"><%-username%></div>
+        <div class="github_handle">a.k.a "<%-github_handle%>"</div>
           <div class="message-text"><%-text%></div>
           <div class="roomname"><%-roomname%></div>
         </div>
       `);
-    MessagesView.$chats.append($(newMessage(message)));
+    var $newMessage = $(newMessage(message).trim());
+
+    // debugger;
+    MessagesView.$chats.append($newMessage);
   },
 
   handleClick: function (event) {

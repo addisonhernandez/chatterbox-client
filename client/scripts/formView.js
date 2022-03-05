@@ -14,8 +14,6 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
-    // Make this function actually send a message to the Parse API.
-
     // collect message data into an object
     // - username : App.username
     // - roomname : $('#rooms select').val()
