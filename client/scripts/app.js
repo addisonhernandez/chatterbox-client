@@ -4,11 +4,13 @@
 
 var App = {
 
+  // get fist IMG descendent of CSS class 'spinner' (which is the spiffygif.gif)
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
 
   initialize: function() {
+    // string of name inputed to pop up
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -33,6 +35,7 @@ var App = {
     });
   },
 
+  // ???
   startSpinner: function() {
     App.$spinner.show();
     FormView.setStatus(true);
