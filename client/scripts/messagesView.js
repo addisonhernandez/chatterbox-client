@@ -8,10 +8,19 @@ var MessagesView = {
   initialize: function () {
     // TODO: Perform any work which needs to be done
     // when this view loads.
+
+    // Render all current data stored in Messages._data // ??
   },
 
   render: function () {
-    // TODO: Render _all_ the messages.
+    // TODO: Render _all_ the messages. // NOT DONE ??????
+    _.template(`
+      <div class="message">
+        <div class="username"><%-username%></div>
+        <div class="message-text"><%-text%></div>
+        <div class="roomname"><%-roomname%></div>
+      </div>
+    `);
   },
 
   renderMessage: function (message) {
@@ -20,6 +29,9 @@ var MessagesView = {
 
     MessagesView.$chats.append($renderedMesssage);
   },
+
+  // MessagesView.renderMessage(message);
+  // expect($('#chats').children().length).to.equal(1);
 
   //   <!--
   //   <div class="chat">
